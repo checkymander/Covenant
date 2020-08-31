@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 
 using Covenant.Core;
 using Covenant.Models.Grunts;
+using Confuser.Core;
 
 namespace Covenant.Controllers
 {
@@ -17,10 +19,12 @@ namespace Covenant.Controllers
     public class GruntCommandApiController : Controller
     {
         private readonly ICovenantService _service;
+        private readonly ILogger<GruntCommandApiController> _logger;
 
-        public GruntCommandApiController(ICovenantService service)
+        public GruntCommandApiController(ICovenantService service, ILogger<GruntCommandApiController> logger)
         {
             _service = service;
+            _logger = logger;
         }
 
         // GET: api/commands

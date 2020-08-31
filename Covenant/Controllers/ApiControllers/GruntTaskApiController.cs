@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-
+using Microsoft.Extensions.Logging;
 using Covenant.Core;
 using Covenant.Models.Grunts;
 
@@ -16,10 +16,12 @@ namespace Covenant.Controllers
     public class GruntTaskApiController : Controller
     {
         private readonly ICovenantService _service;
+        private readonly ILogger<GruntTaskApiController> _logger;
 
-        public GruntTaskApiController(ICovenantService service)
+        public GruntTaskApiController(ICovenantService service, ILogger<GruntTaskApiController> logger )
         {
             _service = service;
+            _logger = logger;
         }
 
         // GET: api/grunttasks

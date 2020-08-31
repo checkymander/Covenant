@@ -7,6 +7,7 @@ using System.Collections.Generic;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 
 using Covenant.Core;
 using Covenant.Models.Indicators;
@@ -17,10 +18,11 @@ namespace Covenant.Controllers
     public class IndicatorApiController : Controller
     {
         private readonly ICovenantService _service;
-
-        public IndicatorApiController(ICovenantService service)
+        private readonly ILogger<IndicatorApiController> _logger;
+        public IndicatorApiController(ICovenantService service, ILogger<IndicatorApiController> logger)
         {
             _service = service;
+            _logger = logger;
         }
 
         // GET: api/indicators/report

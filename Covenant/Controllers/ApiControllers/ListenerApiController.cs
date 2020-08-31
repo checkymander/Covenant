@@ -7,9 +7,11 @@ using System.Collections.Generic;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 
 using Covenant.Core;
 using Covenant.Models.Listeners;
+using Confuser.Core;
 
 namespace Covenant.Controllers
 {
@@ -17,10 +19,13 @@ namespace Covenant.Controllers
     public class ListenerApiController : Controller
     {
         private readonly ICovenantService _service;
+        private readonly ILogger<ListenerApiController> _logger;
 
-        public ListenerApiController(ICovenantService service)
+
+        public ListenerApiController(ICovenantService service, ILogger<ListenerApiController> logger)
         {
             _service = service;
+            _logger = logger;
         }
 
         // GET: api/listeners/types

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 
 using Covenant.Core;
 using Covenant.Models.Grunts;
@@ -17,10 +18,12 @@ namespace Covenant.Controllers
     public class ImplantTemplateApiController : Controller
     {
         private readonly ICovenantService _service;
+        private readonly ILogger<ImplantTemplateApiController> _logger;
 
-        public ImplantTemplateApiController(ICovenantService service)
+        public ImplantTemplateApiController(ICovenantService service, ILogger<ImplantTemplateApiController> logger)
         {
             _service = service;
+            _logger = logger;
         }
 
         // GET: api/implanttemplates

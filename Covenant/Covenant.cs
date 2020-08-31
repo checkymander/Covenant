@@ -235,6 +235,7 @@ namespace Covenant
                 .UseSetting("CovenantUri", CovenantUri)
                 .UseSetting(WebHostDefaults.DetailedErrorsKey, "true");
             })
+            .UseNLog()
             .Build();
 
         private static bool IsElevated()

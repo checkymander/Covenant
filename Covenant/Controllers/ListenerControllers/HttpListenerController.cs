@@ -15,6 +15,8 @@ using Covenant.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
+
 
 namespace Covenant.Controllers
 {
@@ -23,11 +25,14 @@ namespace Covenant.Controllers
     {
         private readonly Covenant.Models.Listeners.HttpListenerContext _context;
         private readonly Covenant.Models.Listeners.InternalListener _internalListener;
+        private readonly ILogger<HttpListenerController> _logger;
 
-		public HttpListenerController(Covenant.Models.Listeners.HttpListenerContext context, Covenant.Models.Listeners.InternalListener internalListener)
+        public HttpListenerController(Covenant.Models.Listeners.HttpListenerContext context, Covenant.Models.Listeners.InternalListener internalListener, ILogger<HttpListenerController> logger)
         {
             _context = context;
             _internalListener = internalListener;
+            _logger = logger;
+
         }
 
         private void SetHeaders()
