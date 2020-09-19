@@ -74,6 +74,7 @@ namespace Covenant
 
                 string username = UserNameOption.HasValue() ? UserNameOption.Value() : Environment.GetEnvironmentVariable("COVENANT_USERNAME");
                 string password = PasswordOption.HasValue() ? PasswordOption.Value() : Environment.GetEnvironmentVariable("COVENANT_PASSWORD");
+
                 if (!string.IsNullOrEmpty(username) && string.IsNullOrEmpty(password))
                 {
                     Console.Write("Password: ");
